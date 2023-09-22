@@ -62,6 +62,23 @@ public class BlueprintAPIController {
             return new ResponseEntity<>("Error al traer el autor",HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping(value= "/{author}/{bpname}", method = RequestMethod.GET)
+    public ResponseEntity<?> getBlue(@PathVariable String author, @PathVariable String bpname){
+        try{
+            boolean autorNoExiste = bps.getBlueprint(author,bpname) == null;
+            if(autorNoExiste){
+                return new ResponseEntity<>("El autor " + author + " no existe o el plano " + bpname + " no existe",HttpStatus.NOT_FOUND);
+            }else{
+                //obtener datos que se enviarán a través del API
+                return new ResponseEntity<>(bps.getBlueprint(author, bpname),HttpStatus.ACCEPTED);
+            }
+
+        }catch(BlueprintNotFoundException e){
+            Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>("Error al traer el autor",HttpStatus.NOT_FOUND);
+        }
+    }
     
     
 }

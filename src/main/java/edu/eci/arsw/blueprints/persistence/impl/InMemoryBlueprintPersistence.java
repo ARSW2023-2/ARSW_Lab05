@@ -13,6 +13,7 @@ import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -27,7 +28,7 @@ import org.springframework.stereotype.Service;
 //@Qualifier("memory")
 public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
 
-    private final Map<Tuple<String,String>,Blueprint> blueprints=new HashMap<>();
+    private final ConcurrentHashMap<Tuple<String,String>,Blueprint> blueprints=new ConcurrentHashMap<>();
 
     public InMemoryBlueprintPersistence() {
         //load stub data

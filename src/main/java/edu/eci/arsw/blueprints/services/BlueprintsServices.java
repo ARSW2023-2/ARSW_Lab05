@@ -62,5 +62,9 @@ public class BlueprintsServices {
         //throw new UnsupportedOperationException("Not supported yet."); 
         return  bpp.getBlueprintsByAuthor(author);
     }
+
+    public void setBluePrint(String author, String bprintname, Blueprint blueprint) throws BlueprintNotFoundException{
+        bpp.setBluePrint(author, bprintname, blueprint);
+    }
     
 }

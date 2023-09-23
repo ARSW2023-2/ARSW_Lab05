@@ -92,6 +92,9 @@ public class Blueprint {
         return true;
     }
     
+    public void setPuntos(List<Point> points){
+        this.points = points;
+    }
     
     
 }

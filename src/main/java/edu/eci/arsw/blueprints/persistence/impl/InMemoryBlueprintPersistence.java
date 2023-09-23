@@ -78,5 +78,11 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
     public Set<Blueprint> getAllBlueprints(){
         return blueprints.values().stream().collect(Collectors.toSet());
     }
+
+    @Override
+    public void setBluePrint(String author, String bprintname, Blueprint bluePrint) throws BlueprintNotFoundException{
+        Blueprint blueAux = getBlueprint(author, bprintname);
+        blueAux.setPuntos(bluePrint.getPoints());
+    }
     
 }
